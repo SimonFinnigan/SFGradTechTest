@@ -1,37 +1,37 @@
-function createMedalTable(medals) {
+const createMedalTable = (medals) => {
+  // declare empty medal table object
   const medalTable = {}
-  // declare empty object as medalTable
+  // declare position/points object
+  const positionAndPointsReference = {
+    1: 3,
+    2: 2,
+    3: 1,
+  }
 
-  medals.forEach((sports) => {
-    // loop through medals array
-    const competingCountries = sports.podium
-    // declare competingCountries variable which has access to podium keys of the sports loop
-    competingCountries.forEach((countries) => {
-      // loop through the competingCountries variable
-      const positionPoints = {
-        1: 3,
-        2: 2,
-        3: 1,
-      }
-      // declare positionPoints variable as an object showing that 1st position awards 3 points, 2nd position awards 2 points and that 3rd position awards 1 point
-      const positionAndCountry = countries.split('.')
-      // after looping through the competingCountries loop, we create an array which splits the string between the decimal point, giving 2 positions.
-      const position = positionAndCountry[0]
-      // access the first position of the array which will represent the countries finishing placement
-      const country = positionAndCountry[1]
-      // access the second position of the array which will represent the country name
+  // first loop
+  medals.forEach((sport) => {
+    const countriesCompetingInSport = sport.podium
+    // second loop
+    countriesCompetingInSport.forEach((countries) => {
+      // split position and country name
+      const position = countries.split('.')[0]
+      const country = countries.split('.')[1]
 
-      if (!medalTable[country]) {
-        medalTable[country] = 0
-      }
-      // check if country is in medalTable
+      // global 'if' function
+      isCountryInMedalTable(medalTable, country)
 
-      medalTable[country] = medalTable[country] + positionPoints[position]
-      // inject data into medalTable object
+      // build data structure
+      medalTable[country] =
+        medalTable[country] + positionAndPointsReference[position]
     })
   })
+  //returns data structure
   return medalTable
-  // returns medalTable object with both country and points
+}
+
+// is country in the medal table?
+const isCountryInMedalTable = (medalTable, country) => {
+  if (!medalTable[country]) medalTable[country] = 0
 }
 
 describe('Medal Table Generator', () => {
