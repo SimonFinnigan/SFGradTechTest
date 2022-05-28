@@ -1,19 +1,25 @@
-# Grad Tech Test
+# GradTechTest
 
-This repository contains a selection of tests organised into sub-folders by language.
-For your submission, demonstrate your ability to learn by choosing a language you haven't worked with before.
+## Two objects
 
-## Clone this repository
+To solve this test I initially had to declare two objects, one for the medal table (which would initially be empty) and another which would help decide which points each country was awarded.
 
-Use `git clone` to clone the repository locally, then change the remote, please do not fork this repository. To change the remote, use
+## Loop within a loop
 
-```bash
-git remote set-url origin <path-to-your-blank-repository>
-git push -u origin <branch-name>
-```
+I had to use two loops; one loop to go through the 'medals' array and another which would loop within the first array. This enabled me to split each country in the array between the placing number and the country name.
 
-## Tips
+## First and second position
 
-When the test passes clean up your code.
-It's worth spending time formatting and simplifing things.
-It's more important that humans can read your code than computers.
+Once both the number and country was split I was able to access them using bracket notation.
+
+## Global function
+
+A global function has been created to check if the country exists on the medal table.
+
+## Build data structure
+
+First and second positions are injected into the medal table object which is then returned as the desired data structure.
+
+### Dependencies
+
+Please type `'npm i'` into the terminal to install jest and `'npm t'` to test the function.
