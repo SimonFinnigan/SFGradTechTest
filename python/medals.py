@@ -18,32 +18,38 @@ medalResults = [
 ]
 
 def createMedalTable(results):
-    medalTable = {
-    }
-    for sport in results:
-        countriesCompetingInSport = sport["podium"]
+    # declare empty medal table object
+    medalTable = {}
+    # declare position/points object
+    positionAndPointsReference = {1:3, 2:2, 3:1}
+
+    # first loop
+    for sports in results:
+        countriesCompetingInSport = sports['podium']
+        # second loop
         for countries in countriesCompetingInSport:
-            (country, points) = tableEntry(countries)
-            isCountryInMedalTable(medalTable, country, points)  
+            # split position and country name
+            position = countries.split('.')[0]
+            country = countries.split('.')[1]
+
+            # global 'if' function
+            isCountryInMedalTable(medalTable, country)
+
+            # build data structure
+            medalTable[country] += positionAndPointsReference[int(position)]
+
+    # returns data structure
     return medalTable
 
-def tableEntry(text):
-    points = 0
-    [position, country] = text.split(".")
-    if int(position) == 1:
-        points = 3
-    elif int(position) == 2:
-        points = 2
-    else:
-        points = 1
-    entry = (country, points)
-    return entry
+# is country in the medal table?
+def isCountryInMedalTable(medalTable, country):
+    if not country in medalTable:
+        medalTable[country] = 0
+    
+        
 
-def isCountryInMedalTable(medalTable, country, points):
-    if country in medalTable:
-        medalTable[country] = medalTable[country] + points
-    else:
-        medalTable[country] = points
+createMedalTable(medalResults)
+
 
 def test_function():
     #This it the test function, please don't change me
