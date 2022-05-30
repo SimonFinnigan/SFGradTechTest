@@ -46,10 +46,6 @@ def isCountryInMedalTable(medalTable, country):
     if not country in medalTable:
         medalTable[country] = 0
     
-        
-
-createMedalTable(medalResults)
-
 
 def test_function():
     #This it the test function, please don't change me
