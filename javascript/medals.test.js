@@ -21,8 +21,7 @@ const createMedalTable = (medals) => {
       isCountryInMedalTable(medalTable, country)
 
       // build data structure
-      medalTable[country] =
-        medalTable[country] + positionAndPointsReference[position]
+      medalTable[country] += positionAndPointsReference[position]
     })
   })
   //returns data structure
